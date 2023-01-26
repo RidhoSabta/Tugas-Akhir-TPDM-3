@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+            rel="stylesheet"
+        />
+        <center><title class="text-6xl font-bold">Aplikasi Prediksi Harga Emas</title></center>
+    </head>
+    <body
+        class="
+            justify-between
+            item-center
+            p-40
+            min-h-screen
+            bg-gradient-to-r
+            from-pink-400
+            to-red-500
+            text-red-800
+            md:flex-row
+        "
+    >
+        <main class="bg-white p-14 rounded-lg">
+            <center><h2 class="text-4xl font-bold">PREDIKSI HARGA EMAS</h2></center>
+
+            <form
+                action="{{ url_for('predict') }}"
+                method="post"
+                class="flex flex-col"
+            >
+                <label for="Open" class="mb-2">Harga Pembukaan (Open)</label>
+                <input
+                    type="float"
+                    name="Open"
+                    placeholder=""
+                    required="required"
+                    class="p-4 bg-gray-100 rounded-md"
+                />
+
+                <label for="Usia" class="mb-2">Harga Tertinggi (High)</label>
+                <input
+                    type="float"
+                    name="High"
+                    placeholder=""
+                    required="required"
+                    class="p-4 bg-gray-100 rounded-md"
+                />
+                <label for="Usia" class="mb-2">Harga Terendah (Low)</label>
+                    <input
+                    type="float"
+                    name="Low"
+                    placeholder=""
+                    required="required"
+                    class="p-4 bg-gray-100 rounded-md"
+                />
+
+
+                <button
+                    type="submit"
+                    class="
+                        flex
+                        justify-center
+                        align-center
+                        mt-8
+                        p-4
+                        bg-gradient-to-r
+                        from-green-400
+                        to-blue-500
+                        text-white
+                        rounded-md
+                    "
+                >
+                    PREDIKSI SEKARANG
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="feather feather-arrow-right ml-4"
+                    >
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </button>
+            </form>
+             <div class="bg-white p-16 rounded-lg">
+                <table><center>
+                <h1 class="text-5xl mb-8" ali>
+                    Prediksi harga emas adalah
+                </h1>
+                <h2 class="text-4xl font-bold">USD {{ Price }}</h2>
+                {% if (Price) != 0 %}
+                <div class="mt-">
+                    <p>Open: {{ Open }} </p>
+                    <p>High: {{ High }}</p>
+                    <p>Low: {{ Low }}</p>
+                </div>
+                {% endif %}
+            </div>
+        </table></center>
+        </main>
+    </body>
+</html>
